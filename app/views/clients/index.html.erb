@@ -1,0 +1,17 @@
+<div class="container" text-center>
+
+<h1>Confidential list of clients</h1>
+
+
+<ul>
+
+    <%= @clients.each do |client| %>
+     <li>
+     <%= client.name %> (<%= client.url %>)
+    </li>
+<% end %>
+
+</ul>
+
+</div>
+
