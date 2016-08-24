@@ -21,5 +21,23 @@ def show
   @client = Client.find(params[:id])
 end
 
+#method qui va afficher formulaire
+  def new
+  end
+
+#recup params du formulaire et créer en base
+  def create
+  end
+
+#afficher le formulaire pré rempli
+  def edit
+  end
+
+#recup infos et modifie en bas
+  def update
+  end
+
+  def destroy
+  end
 
 end
