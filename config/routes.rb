@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
 root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -8,7 +9,8 @@ get "/team" => "pages#team"
 get "/contact" => "pages#joinus"
 
 
-resources :clients, #points d'entrée nécessaires slt only (:new, :create, :index, :show)
+resources :clients #, points d'entrée nécessaires slt only (:new, :create, :index, :show)
+
 
 =begin
 # les 7 points d'entrée du routing CRUD dans Rails
@@ -27,7 +29,5 @@ patch "/clients/:id" => "clients#create" #update un produit en base
 #Delete action routes
 delete "/clients/:id" => "clients#destroy" #par convention, la method du controller sappelle destroy (pour differencier avec delete)
 =end
-
-
-
 end
+

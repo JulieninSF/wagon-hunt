@@ -1,13 +1,23 @@
-<div class="container" text-center>
+<div class="container" class="text-center">
 
 <h1>Confidential list of clients</h1>
 
+<p>
+  <%= link_to "Back to homepage", root_path, class: "btn btn-primary"
+  %>
+  <%= link_to "Add new client", new_client_path, class: "btn btn-primary"
+  %>
+</p>
 
 <ul>
 
     <%= @clients.each do |client| %>
      <li>
-     <%= client.name %> (<%= client.url %>)
+
+     <%= link_to client.name,client_path(client)
+     %>
+     (<%= client.url %>)
+
     </li>
 <% end %>
 

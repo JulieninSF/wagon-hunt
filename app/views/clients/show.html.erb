@@ -1,10 +1,15 @@
-<div class="container" align="center">
+<div class="container" class="text-center" align="center">
 
 <h1>Le détail du client</h1>
 <h2>
   <%= @client.name %>
   <%= @client.url %>
 </h2>
+
+<p class="text-center">
+  <%= link_to "Revenir à la liste", clients_path
+  %>
+</p>
 
 </div>
 

@@ -21,12 +21,29 @@ def show
   @client = Client.find(params[:id])
 end
 
-#method qui va afficher formulaire
+# methode qui va afficher formulaire
+# elle est là pour renvoyer la vue new.html.erb avec le formulaire
   def new
   end
 
 #recup params du formulaire et créer en base
   def create
+    #binding.pry
+    @client = Client.new(client_params)
+
+# la methode va ensuite sauver le client, on le save en base
+    if @client.save #si jarrive à sauver le produit en base, ie sil passe les validations du Models/concerns/client.rb
+
+    #et après, on redirige vers la page de listing de clients
+    redirect_to clients_path
+
+  else
+    render :new
+  end
+    #si marche pas, renvoie le template new avec le formulaire qui a déjà des infos
+    # BUT du IF elese = évite de ne rien prendre en compte dans l'affichage lors que la validation du produit échoue
+
+  #on met un point darret là
   end
 
 #afficher le formulaire pré rempli
@@ -38,6 +55,14 @@ end
   end
 
   def destroy
+  end
+
+  private
+
+  def client_params
+    params.require(:client).permit(:name,:url)
+    #on filtre les parametres à input en base
+    #on empeche l'utilisateur d'ajouter nimporte quoi dans notre base
   end
 
 end
