@@ -1,7 +1,7 @@
 class ClientsController < ApplicationController
-
-
-
+before_action :find_client, only: [:show, :edit, :udpdate, :destroy]
+#pour ne pas répéter le code recup id du formulaire
+#cela signifie "Avant d'appeler l'action show, edit..., je vais appeler la methode find_product qui chope l'id du formulaire"
 def index
 
 #if params[:filter]
@@ -18,7 +18,7 @@ def show
   #on va dire que l'id cest l'indice du tableau (car on a pas encore de data base)
 
 #methode params id à mettre en integer pour le lire dans le tableau
-  @client = Client.find(params[:id])
+
 end
 
 # methode qui va afficher formulaire
@@ -48,13 +48,25 @@ end
 
 #afficher le formulaire pré rempli
   def edit
+     #elle recup l id dans l'URL
+    # elle renvoie un template dans vues qui q le mm nom qu elle
   end
 
 #recup infos et modifie en bas
   def update
+
+    if @client.update(client_params)
+      redirect_to clients_path
+    else
+      render :edit
+    end
   end
 
   def destroy
+#binding.pry
+
+@client.destroy
+redirect_to clients_path
   end
 
   private
@@ -65,4 +77,9 @@ end
     #on empeche l'utilisateur d'ajouter nimporte quoi dans notre base
   end
 
+def find_client
+  @client = Client.find(params[:id])
+
+
+end
 end

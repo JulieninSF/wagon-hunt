@@ -1,0 +1,8 @@
+<%= simple_form_for @client do |f| %>
+
+  <%= f.input :name, placeholder: 'Enter name',label:"Which client?" %>
+
+  <%= f.input :url, placeholder: 'Enter url',label:"Which URL?" %>
+
+  <%= f.button :submit,"Add", class:"btn btn-primary" %>
+<% end %>
