@@ -3,14 +3,14 @@ Rails.application.routes.draw do
 root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-get "/products/:id" => "products#index"
+get "/clients" => "clients#index"
+get "/clients/new" => "clients#new"
+get "/clients/:id" => "clients#show"
 
 get "/team" => "pages#team"
 get "/contact" => "pages#joinus"
 
-
 resources :clients #, points d'entrée nécessaires slt only (:new, :create, :index, :show)
-
 
 =begin
 # les 7 points d'entrée du routing CRUD dans Rails

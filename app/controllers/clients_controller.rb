@@ -1,7 +1,8 @@
 class ClientsController < ApplicationController
-before_action :find_client, only: [:show, :edit, :udpdate, :destroy]
+before_action :find_client, only: [:show, :edit, :update, :destroy]
 #pour ne pas répéter le code recup id du formulaire
 #cela signifie "Avant d'appeler l'action show, edit..., je vais appeler la methode find_product qui chope l'id du formulaire"
+
 def index
 
 #if params[:filter]
@@ -28,33 +29,32 @@ end
 
 #recup params du formulaire et créer en base
   def create
-    #binding.pry
-    @client = Client.new(client_params)
+        #binding.pry
+        @client = Client.new(client_params)
 
-# la methode va ensuite sauver le client, on le save en base
-    if @client.save #si jarrive à sauver le produit en base, ie sil passe les validations du Models/concerns/client.rb
+    # la methode va ensuite sauver le client, on le save en base
+        if @client.save #si jarrive à sauver le produit en base, ie sil passe les validations du Models/concerns/client.rb
 
-    #et après, on redirige vers la page de listing de clients
-    redirect_to clients_path
+        #et après, on redirige vers la page de listing de clients
+        redirect_to clients_path
 
-  else
-    render :new
-  end
-    #si marche pas, renvoie le template new avec le formulaire qui a déjà des infos
-    # BUT du IF elese = évite de ne rien prendre en compte dans l'affichage lors que la validation du produit échoue
+      else
+        render :new
+      end
+        #si marche pas, renvoie le template new avec le formulaire qui a déjà des infos
+        # BUT du IF elese = évite de ne rien prendre en compte dans l'affichage lors que la validation du produit échoue
 
   #on met un point darret là
   end
 
 #afficher le formulaire pré rempli
   def edit
-     #elle recup l id dans l'URL
+     #elle recup l'id dans l'URL
     # elle renvoie un template dans vues qui q le mm nom qu elle
   end
 
 #recup infos et modifie en bas
   def update
-
     if @client.update(client_params)
       redirect_to clients_path
     else
@@ -64,7 +64,6 @@ end
 
   def destroy
 #binding.pry
-
 @client.destroy
 redirect_to clients_path
   end
@@ -72,7 +71,7 @@ redirect_to clients_path
   private
 
   def client_params
-    params.require(:client).permit(:name,:url)
+    params.require(:client).permit(:name,:url,:tagline)
     #on filtre les parametres à input en base
     #on empeche l'utilisateur d'ajouter nimporte quoi dans notre base
   end
