@@ -1,8 +1,10 @@
 <%= simple_form_for @client do |f| %>
 
   <%= f.input :name, placeholder: 'Enter name',label:"Which client?" %>
-
   <%= f.input :url, placeholder: 'Enter url',label:"Which URL?" %>
-
+  <%= f.input :tagline, placeholder: 'Enter tagline',label:"Which tagline?" %>
+  <%= f.input :category, collection: ["CEO", "CFO", "CMO"], prompt:"Which category?" %>
   <%= f.button :submit,"Add", class:"btn btn-primary" %>
+
+
 <% end %>

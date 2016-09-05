@@ -4,14 +4,11 @@ before_action :find_client, only: [:show, :edit, :update, :destroy]
 #cela signifie "Avant d'appeler l'action show, edit..., je vais appeler la methode find_product qui chope l'id du formulaire"
 
 def index
-
-#if params[:filter]
-#@clients = CLIENTS.select{|client| client[:category]== params[:filter]}
-#else
-@clients = Client.all
-#@clients = ["John", "Daniel", "Peter"]
-#end
-
+  if params[:category]
+    @clients = Client.where(category: params[:category])
+  else
+    @clients = Client.all
+  end
 end
 
 def show
@@ -71,7 +68,7 @@ redirect_to clients_path
   private
 
   def client_params
-    params.require(:client).permit(:name,:url,:tagline)
+    params.require(:client).permit(:name,:url,:tagline,:category)
     #on filtre les parametres à input en base
     #on empeche l'utilisateur d'ajouter nimporte quoi dans notre base
   end
