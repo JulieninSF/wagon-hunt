@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  devise_for :users
 root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -21,7 +20,7 @@ get "/clients/:id" => "clients#show"
 
 #Create action routes
 get "/clients/new" => "clients#new" #afficher formulaire pr creer client
-post "/clients" => "clients#create" #action va recuperer les params du formulaire et créer en base de données le client
+post "/clients" => "clients#create" #action va  recuperer les params du formulaire et créer en base de données le client
 
 #Update action routes
 get "/clients/:id/edit" => "clients#edit" #affiche formulaire pré rempli d'un produit existant

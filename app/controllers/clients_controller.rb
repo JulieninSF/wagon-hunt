@@ -1,4 +1,5 @@
 class ClientsController < ApplicationController
+skip_before_action :authenticate_user!, only: [ :index, :show]
 before_action :find_client, only: [:show, :edit, :update, :destroy]
 #pour ne pas répéter le code recup id du formulaire
 #cela signifie "Avant d'appeler l'action show, edit..., je vais appeler la methode find_product qui chope l'id du formulaire"
