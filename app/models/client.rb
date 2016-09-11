@@ -1,6 +1,8 @@
 class Client < ApplicationRecord
 
 belongs_to :user
+
+validates :user, presence: true
 validates :name, presence: true, uniqueness: true
 #pour écrire un client, le nom doit être présent et unique
 validates :url, presence: true, uniqueness: true

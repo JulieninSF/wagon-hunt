@@ -29,6 +29,7 @@ end
   def create
         #binding.pry
         @client = Client.new(client_params)
+        @client.user = current_user
 
     # la methode va ensuite sauver le client, on le save en base
         if @client.save #si jarrive à sauver le produit en base, ie sil passe les validations du Models/concerns/client.rb
@@ -69,7 +70,7 @@ redirect_to clients_path
   private
 
   def client_params
-    params.require(:client).permit(:name,:url,:tagline,:category)
+    params.require(:client).permit(:name,:url,:tagline,:category,:user)
     #on filtre les parametres à input en base
     #on empeche l'utilisateur d'ajouter nimporte quoi dans notre base
   end
