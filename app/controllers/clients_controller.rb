@@ -70,7 +70,7 @@ redirect_to clients_path
   private
 
   def client_params
-    params.require(:client).permit(:name,:url,:tagline,:category,:photo)
+    params.require(:client).permit(:name,:url,:tagline,:category,:photo,:user)
     #on filtre les parametres à input en base
     #on empeche l'utilisateur d'ajouter nimporte quoi dans notre base
   end
