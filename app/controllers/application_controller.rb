@@ -5,9 +5,12 @@ class ApplicationController < ActionController::Base
  before_action :authenticate_user! #Liste blanche
  #attention ligne clé du site
 
+  def product_params
+    params.require(:product).permit(:name, :description, photos: [])
+  end
+
   def initialize_user
     @client = Client.new
  end
-
 
 end
