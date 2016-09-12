@@ -1,6 +1,6 @@
 class Client < ApplicationRecord
  has_attachment :photo
-
+ has_many :upvotes
 belongs_to :user
 
 validates :user, presence: true
