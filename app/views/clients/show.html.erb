@@ -13,6 +13,10 @@
     </p>
 <% end %>
 
+<% if @product.photo? %>
+  <%= cl_image_tag @product.photo.path, width: 200 %>
+<% end %>
+
     <%= link_to "Get it",@client.url,class:"btn btn-primary btn-lg" %>
   </div>
 </div>
